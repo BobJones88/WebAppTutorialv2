@@ -6,12 +6,14 @@ com\restTutorial\services\GenericManager.class
 com\restTutorial\dao\GenericDao.class
 com\restTutorial\rest\RecipeRestService.class
 com\restTutorial\dao\impl\UserDaoImpl.class
+com\restTutorial\rest\RestBaseController.class
 com\restTutorial\services\impl\UserManagerImpl.class
 com\restTutorial\dao\impl\HibernateDaoImpl.class
 com\restTutorial\dao\RecipeDao.class
 com\restTutorial\models\Tags.class
 com\restTutorial\models\Review.class
 com\restTutorial\dao\UserDao.class
+com\restTutorial\rest\CORSFilter.class
 com\restTutorial\rest\UserRestService.class
 com\restTutorial\services\impl\RecipeManagerImpl.class
 com\restTutorial\models\User.class

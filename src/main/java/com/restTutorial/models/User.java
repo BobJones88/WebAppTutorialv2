@@ -25,6 +25,18 @@ public class User {
 	@Column(name = "userName", length = 45)
 	private String userName;
 	
+	@Column(name = "password", length = 45)
+	private String password;
+	
+	@Column(name = "profilePicture", length = 45)
+	private String profilePicture;
+	
+	@Column(name = "handle", length = 45)
+	private String handle;
+	
+	@Column(name = "email", length = 45)
+	private String email;
+	
 	public User(){}
 	
 	public User(Long id, String firstName, String lastName, String userName){
@@ -44,4 +56,17 @@ public class User {
 	
 	public String getUserName() { return this.userName; }
 	public void setUserName(String userName) { this.userName = userName; }
+	
+	public String getPassword() { return this.password; }
+	public void setPassword(String password) { this.password = password; }
+	
+	public String getProfilePicture() { return this.profilePicture; }
+	public void setProfilePicture(String profilePicture) { this.profilePicture = profilePicture; }
+	
+	public String getHandle() { return this.handle; }
+	public void setHandle(String handle) { this.handle = handle; }
+	
+	public String getEmail() { return this.email; }
+	public void setEmail(String email) { this.email = email; }
+	
 }

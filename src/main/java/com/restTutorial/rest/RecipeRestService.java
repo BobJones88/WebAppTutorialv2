@@ -49,6 +49,14 @@ public class RecipeRestService {
 		return Response.ok(recipe).build();
 	}
 	
+	@GET
+	@Path("/tags/search")
+	@Produces("application/json")
+	public Response searchForTags(@QueryParam("filter") String filter){
+		List<Recipe> recipe = recipeManager.searchForRecipeByTags(filter);
+		return Response.ok(recipe).build();
+	}
+	
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")

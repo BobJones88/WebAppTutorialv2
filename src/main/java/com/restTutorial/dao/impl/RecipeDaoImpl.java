@@ -10,7 +10,6 @@ import com.restTutorial.dao.RecipeDao;
 import com.restTutorial.models.Recipe;
 
 
-
 @Repository("recipeDao")
 public class RecipeDaoImpl extends HibernateDaoImpl<Recipe, Long> implements RecipeDao {
 
@@ -24,6 +23,19 @@ public class RecipeDaoImpl extends HibernateDaoImpl<Recipe, Long> implements Rec
 		String recipeQuery = "FROM Recipe u WHERE (u.recipeName LIKE :recipeName)";
 		Query query = session.createQuery(recipeQuery);
 		query.setString("recipeName", "%"+name+"%");
+		List<Recipe> recipesResult = query.list();
+		
+		return recipesResult;
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Recipe> searchForRecipeByTags(String name) {
+		Session session = getSessionFactory().getCurrentSession();
+		
+		String tagQuery = "FROM Recipe r join fetch r.tags child where (child.tagName LIKE :tagName)";
+		Query query = session.createQuery(tagQuery);
+		query.setString("tagName", "%"+name+"%");
 		List<Recipe> recipesResult = query.list();
 		
 		return recipesResult;

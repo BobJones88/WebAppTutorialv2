@@ -6,4 +6,5 @@ import com.restTutorial.models.Recipe;
 
 public interface RecipeDao extends GenericDao<Recipe, Long>{
 	List<Recipe> searchForRecipeByName(String name);
+	List<Recipe> searchForRecipeByTags(String name);
 }

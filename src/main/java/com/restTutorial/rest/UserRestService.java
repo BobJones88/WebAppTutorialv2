@@ -21,7 +21,7 @@ import com.restTutorial.services.UserManager;
 
 @Component
 @Path("/users")
-public class UserRestService {
+public class UserRestService extends RestBaseController {
 
 	@Autowired
 	private UserManager userManager;
@@ -37,7 +37,7 @@ public class UserRestService {
 			return Response.status(Response.Status.NOT_FOUND).type(MediaType.TEXT_PLAIN).entity("Resource not found for id="+id).build();
 		}
 
-		return Response.ok(mockUser).build();
+		return addCorsHeaders(Response.ok(mockUser));
 	
 	}
 	
@@ -46,7 +46,7 @@ public class UserRestService {
 	@Produces("application/json")
 	public Response searchForUsers(@QueryParam("filter") String filter){
 		List<User> users = userManager.searchForUserByName(filter);
-		return Response.ok(users).build();
+		return addCorsHeaders(Response.ok(users));
 	}
 	
 	@POST

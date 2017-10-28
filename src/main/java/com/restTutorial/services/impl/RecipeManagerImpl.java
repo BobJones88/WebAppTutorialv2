@@ -29,4 +29,8 @@ public class RecipeManagerImpl extends GenericManagerImpl<Recipe, Long> implemen
 	public List<Recipe> searchForRecipeByName(String name) {
 		return recipeDao.searchForRecipeByName(name);
 	}
+	
+	public List<Recipe> searchForRecipeByTags(String name) {
+		return recipeDao.searchForRecipeByTags(name);
+	}
 }

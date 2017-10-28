@@ -1,6 +1,6 @@
 package com.restTutorial.models;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,14 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "recipe")
@@ -54,18 +51,17 @@ public class Recipe {
 	@OneToMany(targetEntity = Tags.class, fetch=FetchType.EAGER)
 	@JoinColumn(name = "recipeID")
 	@Cascade(value = {CascadeType.ALL})
-	private List<Tags> tags;
+	private Set<Tags> tags;
 	
-	@JsonIgnore
-	@OneToMany( /* targetEntity = Review.class, */ fetch=FetchType.LAZY)
+	@OneToMany( /* targetEntity = Review.class, */ fetch=FetchType.EAGER)
 	@JoinColumn(name = "recipeID")
 //	@Cascade(value = {CascadeType.ALL})
-	private List<Review> reviews;
+	private Set<Review> reviews;
 
 	
 	public Recipe(){}
 	
-	public Recipe(Long id, String recipeName, List<Tags> tags, String recipeDescription){
+	public Recipe(Long id, String recipeName, Set<Tags> tags, String recipeDescription){
 		this.id = id;
 		this.recipeName = recipeName;
 		this.tags = tags;
@@ -78,11 +74,11 @@ public class Recipe {
 	public String getRecipeName() { return this.recipeName; }
 	public void setRecipeName(String recipeName) { this.recipeName = recipeName; }
 	
-	public List<Tags> getTags() { return this.tags; }
-	public void setTags(List<Tags> tags) { this.tags = tags; }
+	public Set<Tags> getTags() { return this.tags; }
+	public void setTags(Set<Tags> tags) { this.tags = tags; }
 	
-	public List<Review> getReviews() { return this.reviews; }
-	public void setReviews(List<Review> reviews) { this.reviews = reviews; }
+	public Set<Review> getReviews() { return this.reviews; }
+	public void setReviews(Set<Review> reviews) { this.reviews = reviews; }
 	
 	public String getRecipeDescription() { return this.recipeDescription; }
 	public void setRecipeDescription(String recipeDescription) { this.recipeDescription = recipeDescription; }

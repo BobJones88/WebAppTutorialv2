@@ -4,6 +4,8 @@ C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\rest\RecipeRestService.j
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\dao\UserDao.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\models\Review.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\services\RecipeManager.java
+C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\rest\CORSFilter.java
+C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\rest\RestBaseController.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\models\Recipe.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\services\UserManager.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\services\impl\UserManagerImpl.java
