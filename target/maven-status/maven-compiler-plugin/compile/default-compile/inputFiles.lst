@@ -8,6 +8,8 @@ C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\rest\CORSFilter.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\rest\RestBaseController.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\models\Recipe.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\services\UserManager.java
+C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\models\Favorites.java
+C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\models\Timestamp.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\services\impl\UserManagerImpl.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\services\impl\GenericManagerImpl.java
 C:\Java\WebAppTutorialv2\src\main\java\com\restTutorial\services\impl\RecipeManagerImpl.java

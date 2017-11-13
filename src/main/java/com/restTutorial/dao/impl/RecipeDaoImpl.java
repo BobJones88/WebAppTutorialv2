@@ -26,7 +26,6 @@ public class RecipeDaoImpl extends HibernateDaoImpl<Recipe, Long> implements Rec
 		List<Recipe> recipesResult = query.list();
 		
 		return recipesResult;
-		
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -39,7 +38,6 @@ public class RecipeDaoImpl extends HibernateDaoImpl<Recipe, Long> implements Rec
 		List<Recipe> recipesResult = query.list();
 		
 		return recipesResult;
-		
 	}
 	
 }

@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.restTutorial.dao.UserDao;
+import com.restTutorial.models.Favorites;
 import com.restTutorial.models.User;
 
 @Repository("userDao")
@@ -27,6 +28,17 @@ public class UserDaoImpl extends HibernateDaoImpl<User, Long> implements UserDao
 		
 		return usersResult;
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Favorites> searchForUserFavorites(String userId) {
+		Session session = getSessionFactory().getCurrentSession();
+		
+		String favoriteQuery = "FROM Recipe r join fetch r.favorites rf WHERE rf.userId = " + userId;
+		Query query = session.createQuery(favoriteQuery);
+		List<Favorites> favoritesResult = query.list();
+		
+		return favoritesResult;
 	}
 	
 }

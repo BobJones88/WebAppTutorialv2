@@ -57,6 +57,11 @@ public class Recipe {
 	@JoinColumn(name = "recipeID")
 //	@Cascade(value = {CascadeType.ALL})
 	private Set<Review> reviews;
+	
+	@OneToMany( /* targetEntity = Favorites.class, */ fetch=FetchType.EAGER)
+	@JoinColumn(name = "recipeID")
+	@Cascade(value = {CascadeType.ALL})
+	private Set<Favorites> favorites;
 
 	
 	public Recipe(){}

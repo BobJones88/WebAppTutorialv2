@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.restTutorial.models.Favorites;
 import com.restTutorial.models.User;
 import com.restTutorial.services.UserManager;
 
@@ -39,6 +40,14 @@ public class UserRestService extends RestBaseController {
 
 		return addCorsHeaders(Response.ok(mockUser));
 	
+	}
+	
+	@GET
+	@Path("/favorites/search")
+	@Produces("application/json")
+	public Response searchForFavorites(@QueryParam("filter") String filter){
+		List<Favorites> recipe = userManager.searchForUserFavorites(filter);
+		return Response.ok(recipe).build();
 	}
 	
 	@GET

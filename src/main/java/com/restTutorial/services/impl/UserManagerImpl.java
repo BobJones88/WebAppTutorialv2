@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.restTutorial.dao.UserDao;
+import com.restTutorial.models.Favorites;
 import com.restTutorial.models.User;
 import com.restTutorial.services.UserManager;
 
@@ -28,5 +29,9 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
 	
 	public List<User> searchForUserByName(String name) {
 		return userDao.searchForUserByName(name);
+	}
+
+	public List<Favorites> searchForUserFavorites(String userId) {
+		return userDao.searchForUserFavorites(userId);
 	}
 }
