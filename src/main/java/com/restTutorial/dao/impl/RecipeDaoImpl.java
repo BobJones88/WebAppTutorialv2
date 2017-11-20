@@ -32,9 +32,10 @@ public class RecipeDaoImpl extends HibernateDaoImpl<Recipe, Long> implements Rec
 	public List<Recipe> searchForRecipeByTags(String name) {
 		Session session = getSessionFactory().getCurrentSession();
 		
-		String tagQuery = "FROM Recipe r join fetch r.tags child where (child.tagName LIKE :tagName)";
+		String tagQuery = "FROM Recipe r join fetch r.tags rt where (rt.tagName LIKE :tagName)";
 		Query query = session.createQuery(tagQuery);
 		query.setString("tagName", "%"+name+"%");
+		query.setMaxResults(5);
 		List<Recipe> recipesResult = query.list();
 		
 		return recipesResult;

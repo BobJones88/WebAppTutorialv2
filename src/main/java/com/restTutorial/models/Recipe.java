@@ -1,5 +1,7 @@
 package com.restTutorial.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -11,9 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "recipe")
@@ -51,7 +56,20 @@ public class Recipe {
 	@OneToMany(targetEntity = Tags.class, fetch=FetchType.EAGER)
 	@JoinColumn(name = "recipeID")
 	@Cascade(value = {CascadeType.ALL})
+	@JsonIgnore
 	private Set<Tags> tags;
+	
+	@Transient
+	public List<String> getTagNames(){
+		List<String> tagNames = new ArrayList<String>();
+		
+		if (getTags() != null) {
+			for (Tags tag : getTags() ) {
+				tagNames.add(tag.getTagName());
+			}
+		}
+		return tagNames;
+	}
 	
 	@OneToMany( /* targetEntity = Review.class, */ fetch=FetchType.EAGER)
 	@JoinColumn(name = "recipeID")

@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tags")
 public class Tags {
@@ -14,6 +16,7 @@ public class Tags {
 	@Id
 	@Column(name = "recipeId")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonIgnore
 	private Long recipeId;
 	
 	@Column(name = "tagName", length = 45)
@@ -29,6 +32,6 @@ public class Tags {
 	public Long getRecipeId(){ return this.recipeId; }
 	public void setRecipeId(Long id) { this.recipeId = id; }
 	
-	public String getRecipeName() { return this.tagName; }
-	public void setRecipeName(String tagName) { this.tagName = tagName; }
+	public String getTagName() { return this.tagName; }
+	public void setTagName(String tagName) { this.tagName = tagName; }
 }
