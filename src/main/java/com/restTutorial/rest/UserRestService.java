@@ -44,7 +44,7 @@ public class UserRestService extends RestBaseController {
 	}
 	
 	@GET
-	@Path("{id}/search")
+	@Path("{id}/saved")
 	@Produces("application/json")
 	public Response searchForSaved(@PathParam("id") Long id){
 		List<Saved> recipe = userManager.searchForUserSaved(id);
