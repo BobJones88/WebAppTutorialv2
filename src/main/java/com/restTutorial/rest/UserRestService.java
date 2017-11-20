@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.restTutorial.models.Favorites;
+import com.restTutorial.models.Saved;
 import com.restTutorial.models.User;
 import com.restTutorial.services.UserManager;
 
@@ -43,10 +44,18 @@ public class UserRestService extends RestBaseController {
 	}
 	
 	@GET
-	@Path("/favorites/search")
+	@Path("/saved/search")
 	@Produces("application/json")
-	public Response searchForFavorites(@QueryParam("filter") String filter){
-		List<Favorites> recipe = userManager.searchForUserFavorites(filter);
+	public Response searchForSaved(@QueryParam("filter") String filter){
+		List<Saved> recipe = userManager.searchForUserSaved(filter);
+		return Response.ok(recipe).build();
+	}
+	
+	@GET
+	@Path("{id}/favorites")
+	@Produces("application/json")
+	public Response searchForFavorites(@PathParam("id") Long id){
+		List<Favorites> recipe = userManager.searchForUserFavorites(id);
 		return Response.ok(recipe).build();
 	}
 	
@@ -88,6 +97,23 @@ public class UserRestService extends RestBaseController {
 		dbUser.setFirstName(user.getFirstName());
 		dbUser.setLastName(user.getLastName());
 		dbUser.setUserName(user.getLastName());
+		
+		userManager.save(dbUser);
+		return Response.noContent().build();
+	}
+	
+	@POST
+	@Path("/favorites/")
+	@Produces("application/json")
+	@Consumes("application/json")
+	public Response modifyFavorite(Favorites favorite){
+		if(favorite == null){
+			return Response.status(Response.Status.BAD_REQUEST).type(MediaType.TEXT_PLAIN).entity("Post contained no body").build();
+		}
+			
+		User dbUser = userManager.get(favorite.getUserId());
+		
+		dbUser.getFavorites().add(favorite);
 		
 		userManager.save(dbUser);
 		return Response.noContent().build();

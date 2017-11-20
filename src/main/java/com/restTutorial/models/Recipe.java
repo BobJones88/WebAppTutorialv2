@@ -63,6 +63,10 @@ public class Recipe {
 	@Cascade(value = {CascadeType.ALL})
 	private Set<Favorites> favorites;
 
+	@OneToMany( /* targetEntity = Favorites.class, */ fetch=FetchType.EAGER)
+	@JoinColumn(name = "recipeID")
+	@Cascade(value = {CascadeType.ALL})
+	private Set<Saved> saved;
 	
 	public Recipe(){}
 	

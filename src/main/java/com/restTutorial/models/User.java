@@ -1,5 +1,6 @@
 package com.restTutorial.models;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -81,5 +82,14 @@ public class User {
 	
 	public String getEmail() { return this.email; }
 	public void setEmail(String email) { this.email = email; }
+	
+	public Set<Favorites> getFavorites() { 
+		if (favorites == null) {			
+			favorites = new HashSet();			
+		}
+		return this.favorites; 
+	
+	}
+	
 	
 }

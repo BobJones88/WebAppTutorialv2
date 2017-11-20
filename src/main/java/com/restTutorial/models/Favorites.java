@@ -2,6 +2,8 @@ package com.restTutorial.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,6 +12,10 @@ import javax.persistence.Table;
 public class Favorites extends Timestamp {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "favoritesId")
+	private Long favoritesId;
+	
 	@Column(name = "recipeId")
 	private Long recipeId;
 	
@@ -28,4 +34,7 @@ public class Favorites extends Timestamp {
 	
 	public Long getUserId() { return this.userId; }
 	public void setUserId(Long userId) { this.userId = userId; }
+	
+	public Long getFavoritesId() { return this.favoritesId; }
+	public void setFavoritesId(Long favoritesId) { this.favoritesId = favoritesId; }
 }
