@@ -9,5 +9,5 @@ import com.restTutorial.models.User;
 public interface UserDao extends GenericDao<User, Long>{
 	List<User> searchForUserByName(String name);
 	List<Favorites> searchForUserFavorites(Long userId);
-	List<Saved> searchForUserSaved(String userId);
+	List<Saved> searchForUserSaved(Long userId);
 }

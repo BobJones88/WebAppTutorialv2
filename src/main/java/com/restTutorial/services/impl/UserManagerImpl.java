@@ -36,7 +36,7 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
 		return userDao.searchForUserFavorites(userId);
 	}
 	
-	public List<Saved> searchForUserSaved(String userId) {
+	public List<Saved> searchForUserSaved(Long userId) {
 		return userDao.searchForUserSaved(userId);
 	}
 

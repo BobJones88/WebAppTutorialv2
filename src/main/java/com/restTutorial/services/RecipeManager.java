@@ -2,6 +2,7 @@ package com.restTutorial.services;
 
 import java.util.List;
 
+import com.restTutorial.models.Rating;
 import com.restTutorial.models.Recipe;
 
 

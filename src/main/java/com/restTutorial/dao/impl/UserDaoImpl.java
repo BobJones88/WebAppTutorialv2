@@ -45,11 +45,13 @@ public class UserDaoImpl extends HibernateDaoImpl<User, Long> implements UserDao
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Saved> searchForUserSaved(String userId) {
+	public List<Saved> searchForUserSaved(Long userId) {
 		Session session = getSessionFactory().getCurrentSession();
 		
-		String favoriteQuery = "FROM Recipe r join fetch r.saved rs WHERE rs.userId = " + userId;
-		Query query = session.createQuery(favoriteQuery);
+		String savedQuery = "FROM Recipe r join fetch r.saved rs WHERE rs.userId = :userId";
+		Query query = session.createQuery(savedQuery);
+		query.setLong("userId", userId);
+		
 		List<Saved> savedResult = query.list();
 		
 		return savedResult;

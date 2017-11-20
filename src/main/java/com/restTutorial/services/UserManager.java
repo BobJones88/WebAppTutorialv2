@@ -13,6 +13,6 @@ public interface UserManager extends GenericManager<User, Long> {
 	Favorites getFavorites(Long userId);
 	List<Favorites> searchForUserFavorites(Long filter);
 		
-	List<Saved> searchForUserSaved(String filter);
+	List<Saved> searchForUserSaved(Long filter);
 	
 }
