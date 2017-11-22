@@ -1,6 +1,7 @@
 package com.restTutorial.rest;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -16,6 +17,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.restTutorial.models.Rating;
 import com.restTutorial.models.Recipe;
 import com.restTutorial.services.RecipeManager;
 
@@ -86,6 +88,33 @@ public class RecipeRestService {
 		
 		dbRecipe.setRecipeName(recipe.getRecipeName());
 		
+		recipeManager.save(dbRecipe);
+		return Response.noContent().build();
+	}
+	
+	@POST
+	@Path("/rating/")
+	@Produces("application/json")
+	@Consumes("application/json")
+	public Response modifyRating(Rating rating){
+		if(rating == null){
+			return Response.status(Response.Status.BAD_REQUEST).type(MediaType.TEXT_PLAIN).entity("Post contained no body").build();
+		}
+		
+		Recipe dbRecipe = recipeManager.get(rating.getRecipeId());
+		
+//		Set<Rating> ratingSet = dbRecipe.getRating();
+//		long countRating = 0;
+//		long totalRating = 0;
+//		
+//		for(Rating ratingIter : ratingSet) {
+//			++countRating;
+//			totalRating = totalRating + ratingIter.getUserRating();
+//		}
+//		
+//		dbRecipe.setAverageRating(totalRating / countRating); //Doesn't average, only sets. Pastes over existing
+		
+		dbRecipe.getRating().add(rating);
 		recipeManager.save(dbRecipe);
 		return Response.noContent().build();
 	}

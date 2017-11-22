@@ -1,6 +1,7 @@
 package com.restTutorial.models;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -53,12 +54,15 @@ public class Recipe {
 	@Column(name = "ingredients", length = 45)
 	private String recipeIngredients;
 	
+	@Column(name = "averageRating")
+	private Long averageRating;
+	
 	@OneToMany(targetEntity = Tags.class, fetch=FetchType.EAGER)
 	@JoinColumn(name = "recipeID")
 	@Cascade(value = {CascadeType.ALL})
 	@JsonIgnore
 	private Set<Tags> tags;
-	
+
 	@Transient
 	public List<String> getTagNames(){
 		List<String> tagNames = new ArrayList<String>();
@@ -86,6 +90,12 @@ public class Recipe {
 	@Cascade(value = {CascadeType.ALL})
 	private Set<Saved> saved;
 	
+	@OneToMany(/* targetEntity = Rating.class, */ fetch=FetchType.EAGER)
+	@JoinColumn(name = "recipeID")
+	@Cascade(value = {CascadeType.ALL})
+//	@JsonIgnore
+	private Set<Rating> rating;
+
 	public Recipe(){}
 	
 	public Recipe(Long id, String recipeName, Set<Tags> tags, String recipeDescription){
@@ -94,6 +104,16 @@ public class Recipe {
 		this.tags = tags;
 		this.recipeDescription = recipeDescription;
 	}
+	
+	public Long getAverageRating() { return averageRating; }
+	public void setAverageRating(Long averageRating) { this.averageRating = averageRating; }
+	
+	public Set<Rating> getRating() {
+		if (rating == null) { 
+			rating = new HashSet<Rating>();	
+		} 
+		return this.rating; }
+	public void setRating(Set<Rating> rating) { this.rating = rating; }
 	
 	public Long getId(){ return this.id; }
 	public void setId(Long id) { this.id = id; }

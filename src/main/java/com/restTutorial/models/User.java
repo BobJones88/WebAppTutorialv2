@@ -46,7 +46,7 @@ public class User {
 	@Column(name = "email", length = 45)
 	private String email;
 	
-	@OneToMany(targetEntity = Favorites.class, fetch=FetchType.EAGER)
+	@OneToMany(/* targetEntity = Favorites.class,*/ fetch=FetchType.EAGER)
 	@JoinColumn(name = "userID")
 	@Cascade(value = {CascadeType.ALL})
 	private Set<Favorites> favorites;
@@ -85,7 +85,7 @@ public class User {
 	
 	public Set<Favorites> getFavorites() { 
 		if (favorites == null) {			
-			favorites = new HashSet();			
+			favorites = new HashSet<Favorites>();			
 		}
 		return this.favorites; 
 	

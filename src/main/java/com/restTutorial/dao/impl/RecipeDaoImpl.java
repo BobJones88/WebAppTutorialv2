@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.restTutorial.dao.RecipeDao;
+import com.restTutorial.models.Favorites;
+import com.restTutorial.models.Rating;
 import com.restTutorial.models.Recipe;
 
 
@@ -26,6 +28,19 @@ public class RecipeDaoImpl extends HibernateDaoImpl<Recipe, Long> implements Rec
 		List<Recipe> recipesResult = query.list();
 		
 		return recipesResult;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Rating> searchForRating(Long userId) {
+		Session session = getSessionFactory().getCurrentSession();
+		
+		String ratingQuery = "FROM Recipe r join fetch r.rating rf WHERE rf.userId = :userId";
+		Query query = session.createQuery(ratingQuery);
+		query.setLong("userId", userId);
+		
+		List<Rating> favoritesResult = query.list();
+		
+		return favoritesResult;
 	}
 	
 	@SuppressWarnings("unchecked")

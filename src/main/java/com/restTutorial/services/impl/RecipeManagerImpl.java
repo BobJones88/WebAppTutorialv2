@@ -34,4 +34,9 @@ public class RecipeManagerImpl extends GenericManagerImpl<Recipe, Long> implemen
 	public List<Recipe> searchForRecipeByTags(String name) {
 		return recipeDao.searchForRecipeByTags(name);
 	}
+
+	public Rating getRating(Long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

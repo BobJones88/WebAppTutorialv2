@@ -10,4 +10,6 @@ public interface RecipeManager extends GenericManager<Recipe, Long> {
 	Recipe getRecipeById(Long id);
 	List<Recipe> searchForRecipeByName(String name);
 	List<Recipe> searchForRecipeByTags(String name);
+	
+	Rating getRating(Long userId);
 }
