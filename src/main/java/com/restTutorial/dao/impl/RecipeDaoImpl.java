@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.restTutorial.dao.RecipeDao;
-import com.restTutorial.models.Favorites;
 import com.restTutorial.models.Rating;
 import com.restTutorial.models.Recipe;
 
