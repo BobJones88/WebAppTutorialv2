@@ -65,6 +65,8 @@ public class UserRestService extends RestBaseController {
 	public Response searchForUsers(@QueryParam("filter") String filter){
 		List<User> users = userManager.searchForUserByName(filter);
 		return addCorsHeaders(Response.ok(users));
+		//TODO: Need to add a function to search by username
+		//TODO: Need to add a function to search by e-mail address
 	}
 	
 	@POST
